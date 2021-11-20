@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,11 +14,7 @@
     "crypto": "^1.0.1",
     "express": "^4.17.1",
     "https": "^1.0.0",
-<<<<<<< HEAD
     "node-fetch": "^2.6.6"
-=======
-    "nodemon": "^2.0.7"
->>>>>>> ef2d6309def31b8160028729a9eb105dd6b10749
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

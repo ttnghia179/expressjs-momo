@@ -14,7 +14,7 @@ app.get("/momo", function (req, res) {
   let orderId = requestId;
   let orderInfo = "Thanh toan cho don hang " + orderId;
   let redirectUrl =
-    "http://d397-2001-ee0-4b8b-a520-6986-e225-83b0-5dcf.ngrok.io/handle-result-payment";
+    "https://quiet-retreat-13947.herokuapp.com/handle-result-payment";
   let ipnUrl = "https://momo.vn";
   let amount = "12000";
   let requestType = "captureWallet";
