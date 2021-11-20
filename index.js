@@ -14,7 +14,7 @@ app.get("/momo", function (req, res) {
   let orderId = requestId;
   let orderInfo = "Thanh toan cho don hang " + orderId;
   let redirectUrl =
-    "https://quiet-retreat-13947.herokuapp.com/handle-result-payment";
+    "http://7633-2001-ee0-4b8b-a520-6986-e225-83b0-5dcf.ngrok.io/handle-result-payment";
   let ipnUrl = "https://momo.vn";
   let amount = "12000";
   let requestType = "captureWallet";
@@ -82,13 +82,13 @@ app.get("/momo", function (req, res) {
   const reqmomo = https.request(options, (resp) => {
     resp.setEncoding("utf8");
     resp.on("data", (body) => {
-      console.log("Body: ");
-      console.log(body);
-      console.log("payUrl: ");
-      let payURL = body.substring(body.indexOf("https://test-payment.momo.vn/v2/gateway/pay") ,
-          body.indexOf("deeplink")-3)
-      console.log(payURL);
-      response += payURL;
+      try {
+        JSON.parse(body);
+        console.log(JSON.parse(body).payUrl);
+        response += JSON.parse(body).payUrl;
+      } catch (e) {
+        response = "502 Bad Request";
+      }
     });
     resp.on("end", () => {
       res.json(response);
