@@ -75,15 +75,15 @@ app.get("/momo", function (req, res) {
   };
   let response = "";
   const reqmomo = https.request(options, (resp) => {
-    console.log(`Status: ${resp.statusCode}`);
-    console.log(`Headers: ${JSON.stringify(resp.headers)}`);
     resp.setEncoding("utf8");
     resp.on("data", (body) => {
       console.log("Body: ");
       console.log(body);
       console.log("payUrl: ");
-      console.log(JSON.parse(body).payUrl);
-      response += JSON.parse(body).payUrl;
+      let payURL = body.substring(body.indexOf("https://test-payment.momo.vn/v2/gateway/pay") ,
+          body.indexOf("deeplink")-3)
+      console.log(payURL);
+      response += payURL;
     });
     resp.on("end", () => {
       res.json(response);
