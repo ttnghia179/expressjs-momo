@@ -1,6 +1,6 @@
 let express = require("express");
 let app = express();
-let port = 3003;
+let port = process.env.PORT || 3003;
 let cors = require("cors");
 app.use(cors());
 
